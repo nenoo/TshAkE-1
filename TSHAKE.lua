@@ -3084,17 +3084,6 @@ else
          send(msg.chat_id_, msg.id_, 1, '`قم بارسال الرابط الان`', 1, 'md')
 end
 	end
-
-          local text = msg.content_.text_:gsub('الرابط','link')
-  if text and text:match('[Ll][Ii][Nn][Kk] (.*)') then
-        local link = text:match('[Ll][Ii][Nn][Kk] (.*)')
-        database:set("bot:group:link"..msg.chat_id_, link)
-                if database:get('lang:gp:'..msg.chat_id_) then
-                 send(msg.chat_id_, msg.id_, 1, '<b>Group link:</b>\n'..link, 1, 'html')
-               else 
-                 send(msg.chat_id_, msg.id_, 1, '<code>رابط المجموعه :</code>\n'..link, 1, 'html')
-end
- 	end
 	-----------------------------------------------------------------------------------------------
 	if text:match("^[Ll][Ii][Nn][Kk]$") or text:match("^الرابط$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
 	local link = database:get("bot:group:link"..msg.chat_id_)
