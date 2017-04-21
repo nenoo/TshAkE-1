@@ -14,17 +14,13 @@ git clone https://github.com/moodlIMyIl/TshAkE.git
 
 cd TshAkE
 
-chmod +x TSHAKE.sh
-
-chmod +x TSHAKE-Auto.sh
-
 chmod +x install.sh
 
 ./install.sh
 
 او نصب بكود واحد
 
-git clone https://github.com/moodlIMyIl/TshAkE.git && cd TshAkE && chmod +x TSHAKE.sh && chmod +x TSHAKE-Auto.sh && chmod +x install.sh && ./install.sh
+git clone https://github.com/moodlIMyIl/TshAkE.git && cd TshAkE && chmod +x install.sh && ./install.sh
 
 ● وراح يطلب منك تحط اما y او n تختار دائما y وانتر ●
 
