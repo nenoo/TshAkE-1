@@ -6381,7 +6381,7 @@ end
 	-----------------------------------------------------------------------------------------------
           local text = msg.content_.text_:gsub('وضع وقت','setexpire')
 	if text:match("^[Ss][Ee][Tt][Ee][Xx][Pp][Ii][Rr][Ee] (%d+)$") and is_admin(msg.sender_user_id_, msg.chat_id_) then
-		local a = {string.match(text, "^([Ee][Xx][Pp][Ii][Rr][Ee]) (%d+)$")} 
+		local a = {string.match(text, "^([Ss][Ee][Tt][Ee][Xx][Pp][Ii][Rr][Ee]) (%d+)$")} 
 		 local time = a[2] * day
          database:setex("bot:charge:"..msg.chat_id_,time,true)
 		 database:set("bot:enable:"..msg.chat_id_,true)
