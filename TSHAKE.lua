@@ -3062,7 +3062,7 @@ end
                 if database:get('lang:gp:'..msg.chat_id_) then
          send(msg.chat_id_, msg.id_, 1, '_> Flood has been set to_ *'..floodt[2]..'*', 1, 'md')
        else 
-         send(msg.chat_id_, msg.id_, 1, '`تم وضع زمن التكرار للعدد` *'..floodmax[2]..'*', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '`تم وضع زمن التكرار للعدد` *'..floodt[2]..'*', 1, 'md')
 end
 	end
 	end
