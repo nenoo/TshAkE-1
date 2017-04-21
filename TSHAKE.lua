@@ -2247,7 +2247,7 @@ end
 	end
     end
 	-----------------------------------------------------------------------------------------------
-          local text = msg.content_.text_:gsub('الغا كتم','unsilent')
+          local text = msg.content_.text_:gsub('الغاء كتم','unsilent')
 	if text:match("^[Uu][Nn][Ss][Ii][Ll][Ee][Nn][Tt]$") and is_mod(msg.sender_user_id_, msg.chat_id_) and msg.reply_to_message_id_ then
 	function unmute_by_reply(extra, result, success)
 	local hash = 'bot:muted:'..msg.chat_id_
