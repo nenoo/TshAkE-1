@@ -7320,6 +7320,30 @@ end
 ]]
                 send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
    end
+
+if text:match("^source") or text:match("^الاصدار") or text:match("^السورس") or text:match("^سورس") then
+   
+   local text =  [[
+<code>اهلا بك في سورس تشاكي</code>
+
+<code>المطورين : </code>
+
+<b>Dev | </b>@lIMyIl
+<b>Dev | </b>@IX00XI
+<b>Dev | </b>@lIESIl
+<b>Dev | </b>@H_173
+<b>Dev | </b>@EMADOFFICAL
+
+<code>قناه السورس : </code>
+
+<b>Channel | </b>@lTSHAKEl_CH
+
+<code>رابط Github :</code>
+
+https://github.com/moodlIMyIl/TshAkE
+]]
+                send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
+   end
   -----------------------------------------------------------------------------------------------
  end
   -----------------------------------------------------------------------------------------------
