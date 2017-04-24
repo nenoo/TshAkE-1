@@ -604,14 +604,14 @@ function tdcli_update_callback(data)
     --------- ANTI FLOOD -------------------
 	local hash = 'flood:max:'..msg.chat_id_
     if not database:get(hash) then
-        floodMax = 5
+        floodMax = 15
     else
         floodMax = tonumber(database:get(hash))
     end
 
     local hash = 'flood:time:'..msg.chat_id_
     if not database:get(hash) then
-        floodTime = 3
+        floodTime = 5
     else
         floodTime = tonumber(database:get(hash))
     end
@@ -651,14 +651,14 @@ function tdcli_update_callback(data)
 	
 	local hash = 'flood:max:warn'..msg.chat_id_
     if not database:get(hash) then
-        floodMax = 5
+        floodMax = 15
     else
         floodMax = tonumber(database:get(hash))
     end
 
     local hash = 'flood:time:'..msg.chat_id_
     if not database:get(hash) then
-        floodTime = 3
+        floodTime = 5
     else
         floodTime = tonumber(database:get(hash))
     end
@@ -5145,7 +5145,7 @@ end
     if database:get('lang:gp:'..msg.chat_id_) then
          send(msg.chat_id_, msg.id_, 1, '_> tgservice has been_ *unLocked*', 1, 'md')
       else
-         send(msg.chat_id_, msg.id_, 1, '> ` تم فتح الدخول بالرابط بالتحذير`', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '> ` تم فتح الدخول بالرابط بال��حذير`', 1, 'md')
       end
          database:del('bot:tgservice:mute'..msg.chat_id_)
        else
@@ -5607,13 +5607,13 @@ end
 	end
 	------------
 	if not database:get('flood:max:'..msg.chat_id_) then
-	flood_m = 5
+	flood_m = 15
 	else
 	flood_m = database:get('flood:max:'..msg.chat_id_)
 end
 	------------
 	if not database:get('flood:time:'..msg.chat_id_) then
-	flood_t = 3
+	flood_t = 5
 	else
 	flood_t = database:get('flood:time:'..msg.chat_id_)
 	end
@@ -5756,7 +5756,7 @@ end
 	send_welcome = '`معطل | ⭕`'
 end
 		if not database:get('flood:max:warn'..msg.chat_id_) then
-	flood_warn = 5
+	flood_warn = 15
 	else
 	flood_warn = database:get('flood:max:warn'..msg.chat_id_)
 end
