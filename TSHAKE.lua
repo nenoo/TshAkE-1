@@ -604,14 +604,14 @@ function tdcli_update_callback(data)
     --------- ANTI FLOOD -------------------
 	local hash = 'flood:max:'..msg.chat_id_
     if not database:get(hash) then
-        floodMax = 5
+        floodMax = 10
     else
         floodMax = tonumber(database:get(hash))
     end
 
     local hash = 'flood:time:'..msg.chat_id_
     if not database:get(hash) then
-        floodTime = 3
+        floodTime = 2
     else
         floodTime = tonumber(database:get(hash))
     end
@@ -651,14 +651,14 @@ function tdcli_update_callback(data)
 	
 	local hash = 'flood:max:warn'..msg.chat_id_
     if not database:get(hash) then
-        floodMax = 5
+        floodMax = 10
     else
         floodMax = tonumber(database:get(hash))
     end
 
     local hash = 'flood:time:'..msg.chat_id_
     if not database:get(hash) then
-        floodTime = 3
+        floodTime = 2
     else
         floodTime = tonumber(database:get(hash))
     end
@@ -5399,13 +5399,13 @@ end
 	end
 	------------
 	if not database:get('flood:max:'..msg.chat_id_) then
-	flood_m = 5
+	flood_m = 10
 	else
 	flood_m = database:get('flood:max:'..msg.chat_id_)
 end
 	------------
 	if not database:get('flood:time:'..msg.chat_id_) then
-	flood_t = 3
+	flood_t = 2
 	else
 	flood_t = database:get('flood:time:'..msg.chat_id_)
 	end
@@ -5549,7 +5549,7 @@ end
 	send_welcome = '`inactive | ⭕`'
 end
 		if not database:get('flood:max:warn'..msg.chat_id_) then
-	flood_warn = 5
+	flood_warn = 10
 	else
 	flood_warn = database:get('flood:max:warn'..msg.chat_id_)
 end
@@ -5607,13 +5607,13 @@ end
 	end
 	------------
 	if not database:get('flood:max:'..msg.chat_id_) then
-	flood_m = 5
+	flood_m = 10
 	else
 	flood_m = database:get('flood:max:'..msg.chat_id_)
 end
 	------------
 	if not database:get('flood:time:'..msg.chat_id_) then
-	flood_t = 3
+	flood_t = 2
 	else
 	flood_t = database:get('flood:time:'..msg.chat_id_)
 	end
@@ -5756,7 +5756,7 @@ end
 	send_welcome = '`معطل | ⭕`'
 end
 		if not database:get('flood:max:warn'..msg.chat_id_) then
-	flood_warn = 5
+	flood_warn = 10
 	else
 	flood_warn = database:get('flood:max:warn'..msg.chat_id_)
 end
