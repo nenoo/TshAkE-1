@@ -604,14 +604,14 @@ function tdcli_update_callback(data)
     --------- ANTI FLOOD -------------------
 	local hash = 'flood:max:'..msg.chat_id_
     if not database:get(hash) then
-        floodMax = 15
+        floodMax = 5
     else
         floodMax = tonumber(database:get(hash))
     end
 
     local hash = 'flood:time:'..msg.chat_id_
     if not database:get(hash) then
-        floodTime = 5
+        floodTime = 3
     else
         floodTime = tonumber(database:get(hash))
     end
@@ -651,14 +651,14 @@ function tdcli_update_callback(data)
 	
 	local hash = 'flood:max:warn'..msg.chat_id_
     if not database:get(hash) then
-        floodMax = 15
+        floodMax = 5
     else
         floodMax = tonumber(database:get(hash))
     end
 
     local hash = 'flood:time:'..msg.chat_id_
     if not database:get(hash) then
-        floodTime = 5
+        floodTime = 3
     else
         floodTime = tonumber(database:get(hash))
     end
@@ -3155,7 +3155,7 @@ end
 	end
 	end
 	-----------------------------------------------------------------------------------------------
-          local text = msg.content_.text_:gsub('منع','bad')
+          local text = msg.content_.text_:gsub('منع كلمه','bad')
 	if text:match("^[Bb][Aa][Dd] (.*)$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
 	local filters = {string.match(text, "^([Bb][Aa][Dd]) (.*)$")} 
     local name = string.sub(filters[2], 1, 50)
@@ -5145,7 +5145,7 @@ end
     if database:get('lang:gp:'..msg.chat_id_) then
          send(msg.chat_id_, msg.id_, 1, '_> tgservice has been_ *unLocked*', 1, 'md')
       else
-         send(msg.chat_id_, msg.id_, 1, '> ` تم فتح الدخول بالرابط بال��حذير`', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '> ` تم فتح الدخول بالرابط بالتحذير`', 1, 'md')
       end
          database:del('bot:tgservice:mute'..msg.chat_id_)
        else
@@ -5607,13 +5607,13 @@ end
 	end
 	------------
 	if not database:get('flood:max:'..msg.chat_id_) then
-	flood_m = 15
+	flood_m = 5
 	else
 	flood_m = database:get('flood:max:'..msg.chat_id_)
 end
 	------------
 	if not database:get('flood:time:'..msg.chat_id_) then
-	flood_t = 5
+	flood_t = 3
 	else
 	flood_t = database:get('flood:time:'..msg.chat_id_)
 	end
@@ -5756,7 +5756,7 @@ end
 	send_welcome = '`معطل | ⭕`'
 end
 		if not database:get('flood:max:warn'..msg.chat_id_) then
-	flood_warn = 15
+	flood_warn = 5
 	else
 	flood_warn = database:get('flood:max:warn'..msg.chat_id_)
 end
@@ -5770,7 +5770,7 @@ end
  	------------
 	 local TXT = "`اعدادات المجموعه بالمسح`\n======================\n`كل الوسائط` : "..mute_all.."\n" .."`الروابط` : "..mute_links.."\n" .."`التعديل` : "..mute_edit.."\n" .."`البوتات` : "..mute_bots.."\n" .."`الانلاين` : "..mute_in.."\n" .."`اللغه الانكليزيه` : "..lock_english.."\n" .."`اعاده التوجيه` : "..lock_forward.."\n" .."`التثبيت` : "..lock_pin.."\n" .."`اللغه العربيه` : "..lock_arabic.."\n" .."`التاكات` : "..lock_htag.."\n".."`المعرفات` : "..lock_tag.."\n\n" .."`المواقع` : "..lock_wp.."\n" .."`الشبكات` : "..lock_location.."\n" .."`الدخول بالرابط` : "..lock_tgservice.."\n"
 .."`الكلايش` : "..mute_spam.."\n" .."`الصور` : "..mute_photo.."\n" .."`الدردشه` : "..mute_text.."\n" .."`الصور المتحركه` : "..mute_gifs.."\n" .."`الصوتيات` : "..mute_voice.."\n" .."`الاغاني` : "..mute_music.."\n" .."`الفيديوهات` : "..mute_video.."\n`الشارحه` : "..lock_cmd.."\n" .."`التكرار بالطرد` : "..mute_flood.."\n" .."`التكرار بالكتم` : "..lock_flood.."\n\n"
-.."======================\n`الترحيب` : "..send_welcome.."\n`زمن التكرار`  "..flood_t.."\n" .."`عدد التكرار بالطرد` : "..flood_m.."\n" .."`عدد التكرار بالكتم` : "..flood_warn.."\n\n" .."`عدد الكلايش بالمسح` : "..spam_c.."\n" .."`عدد الكلايش بالتحذير` : "..spam_d.."\n"
+.."======================\n`الترحيب` : "..send_welcome.."\n`زمن التكرار` : "..flood_t.."\n" .."`عدد التكرار بالطرد` : "..flood_m.."\n" .."`عدد التكرار بالكتم` : "..flood_warn.."\n\n" .."`عدد الكلايش بالمسح` : "..spam_c.."\n" .."`عدد الكلايش بالتحذير` : "..spam_d.."\n"
 .."`انقضاء البوت` : "..exp_dat.."\n======================"
          send(msg.chat_id_, msg.id_, 1, TXT, 1, 'md')
     end
@@ -6738,6 +6738,7 @@ end
   }, getpro, nil)
 end
 
+
 if text:match("^[Mm][Ee]$") or text:match("^موقعي$") and msg.reply_to_message_id_ == 0 then
 local user_msgs = database:get('user:msgs'..msg.chat_id_..':'..msg.sender_user_id_)
           function get_me(extra,result,success)
@@ -7320,7 +7321,7 @@ end
 ]]
                 send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
    end
-
+   
 if text:match("^source") or text:match("^الاصدار") or text:match("^السورس") or text:match("^سورس") then
    
    local text =  [[
