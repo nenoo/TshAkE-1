@@ -1549,7 +1549,7 @@ elseif msg_type == 'MSG:Text' then
     local chat = msg.chat_id_
     local user_id = msg.sender_user_id_
        delete_msg(chat,msgs)
-          send(msg.chat_id_, 0, 1, "<code>ا��ديك : </code><i>"..msg.sender_user_id_.."</i>\n<code>التاكات <#> تم قفلها ممنوع ارسالها</code>", 1, 'html')
+          send(msg.chat_id_, 0, 1, "<code>ايديك : </code><i>"..msg.sender_user_id_.."</i>\n<code>التاكات <#> تم قفلها ممنوع ارسالها</code>", 1, 'html')
           return 
    end
 end
