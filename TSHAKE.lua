@@ -6778,17 +6778,17 @@ local user_msgs = database:get('user:msgs'..msg.chat_id_..':'..msg.sender_user_i
     if result.username_ then
     result.username_ = '@'..result.username_
       else
-    result.username_ = '`Not Found`'
+    result.username_ = 'Not Found'
         end
     if result.last_name_ then
     lastname = result.last_name_
        else
-    lastname = '`Not Found`'
+    lastname = 'Not Found'
      end
     if database:get('lang:gp:'..msg.chat_id_) then
-      send(msg.chat_id_, msg.id_, 1, "*> Group ID :* `"..msg.chat_id_:gsub('-100','').."`\n*> Your ID :* `"..msg.sender_user_id_.."`\n*> Your Name :* "..result.first_name_.."\n*> UserName :* "..result.username_.."\n*> Your Rank :* `"..t.."`\n*> Msgs : *`"..user_msgs.."`", 1, 'md')
+      send(msg.chat_id_, msg.id_, 1, "> Group ID : "..msg.chat_id_:gsub('-100','').."\n> Your ID : "..msg.sender_user_id_.."\n> Your Name : "..result.first_name_.."\n> UserName : "..result.username_.."\n> Your Rank : "..t.."\n> Msgs : "..user_msgs.."", 1, 'rrr')
        else
-      send(msg.chat_id_, msg.id_, 1, "`> ايدي المجموعه :` *"..msg.chat_id_:gsub('-100','').."*\n`> ايديك :` *"..msg.sender_user_id_.."*\n`> اسمك :` "..result.first_name_.."\n`> معرفك :` "..result.username_.."\n`> موقعك :` `"..t.."`\n`> رسائلك : `*"..user_msgs.."*", 1, 'md')
+      send(msg.chat_id_, msg.id_, 1, "> ايدي المجموعه : "..msg.chat_id_:gsub('-100','').."\n> ايديك : "..msg.sender_user_id_.."\n> اسمك : "..result.first_name_.."\n> معرفك : "..result.username_.."\n> موقعك : "..t.."\n> رسائلك : "..user_msgs.."", 1, 'rrr')
       end
     end
           getUser(msg.sender_user_id_,get_me)
