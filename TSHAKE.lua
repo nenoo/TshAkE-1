@@ -1721,7 +1721,11 @@ end
 	   send(msg.chat_id_, msg.id_, 1, '_Pong_', 1, 'md')
 	end
 	-----------------------------------------------------------------------------------------------
-	if text:match("^[Ll][Ee][Aa][Vv][Ee]") or text:match("^مغادره") and is_admin(msg.sender_user_id_, msg.chat_id_) then
+	if text:match("^[Ll][Ee][Aa][Vv][Ee]") and is_admin(msg.sender_user_id_, msg.chat_id_) then
+	     chat_leave(msg.chat_id_, bot_id)
+    end
+    
+	if text:match("^مغادره") and is_admin(msg.sender_user_id_, msg.chat_id_) then
 	     chat_leave(msg.chat_id_, bot_id)
     end
 	-----------------------------------------------------------------------------------------------
@@ -6538,15 +6542,15 @@ end
        if not database:get("bot:charge:"..msg.chat_id_) then
        database:set("bot:charge:"..msg.chat_id_,true)
                 if database:get('lang:gp:'..msg.chat_id_) then
-	   send(msg.chat_id_, msg.id_, 1, "*> Your ID :* _"..msg.sender_user_id_.."_\n*> UserName :* "..get_info(msg.sender_user_id_).."\n*> Bot Added To Group*", 1, 'md')
+	   send(msg.chat_id_, msg.id_, 1, "*> Your ID :* _"..msg.sender_user_id_.."_\n*> Bot Added To Group*", 1, 'md')
    else 
-	   send(msg.chat_id_, msg.id_, 1, "> `ايديك :` _"..msg.sender_user_id_.."_\n> `معرفك :` "..get_info(msg.sender_user_id_).."\n> `تم تفعيل هذه المجموعه`", 1, 'md')
+	   send(msg.chat_id_, msg.id_, 1, "> `ايديك :` _"..msg.sender_user_id_.."_\n> `تم تفعيل هذه المجموعه`", 1, 'md')
 end
 	   for k,v in pairs(sudo_users) do
                 if database:get('lang:gp:'..msg.chat_id_) then
-	      send(v, 0, 1, "*> Your ID :* _"..msg.sender_user_id_.."_\n*> UserName :* "..get_info(msg.sender_user_id_).."\n*> added bot to new group*" , 1, 'md')
+	      send(v, 0, 1, "*> Your ID :* _"..msg.sender_user_id_.."_\n*> added bot to new group*" , 1, 'md')
       else 
-	      send(v, 0, 1, "> `ايديك :` _"..msg.sender_user_id_.."_\n> `معرفك :` "..get_info(msg.sender_user_id_).."\n> `قمت بتفعيل مجموعه جديده`" , 1, 'md')
+	      send(v, 0, 1, "> `ايديك :` _"..msg.sender_user_id_.."_\n> `قمت بتفعيل مجموعه جديده`" , 1, 'md')
 end
        end
 	   database:set("bot:enable:"..msg.chat_id_,true)
@@ -6566,15 +6570,15 @@ end
       if database:get("bot:charge:"..msg.chat_id_) then
        database:del("bot:charge:"..msg.chat_id_)
                 if database:get('lang:gp:'..msg.chat_id_) then
-	   send(msg.chat_id_, msg.id_, 1, "*> Your ID :* _"..msg.sender_user_id_.."_\n*> UserName :* "..get_info(msg.sender_user_id_).."\n*> Bot Removed To Group!*", 1, 'md')
+	   send(msg.chat_id_, msg.id_, 1, "*> Your ID :* _"..msg.sender_user_id_.."_\n*> Bot Removed To Group!*", 1, 'md')
    else 
-	   send(msg.chat_id_, msg.id_, 1, "> `ايديك :` _"..msg.sender_user_id_.."_\n> `معرفك :` "..get_info(msg.sender_user_id_).."\n> `تم تعطيل هذه المجموعه`", 1, 'md')
+	   send(msg.chat_id_, msg.id_, 1, "> `ايديك :` _"..msg.sender_user_id_.."_\n> `تم تعطيل هذه المجموعه`", 1, 'md')
 end
 	   for k,v in pairs(sudo_users) do
                 if database:get('lang:gp:'..msg.chat_id_) then
-	      send(v, 0, 1, "*> Your ID :* _"..msg.sender_user_id_.."_\n*> UserName :* "..get_info(msg.sender_user_id_).."\n*> Removed bot from new group*" , 1, 'md')
+	      send(v, 0, 1, "*> Your ID :* _"..msg.sender_user_id_.."_\n*> Removed bot from new group*" , 1, 'md')
       else 
-	      send(v, 0, 1, "> `ايديك :` _"..msg.sender_user_id_.."_\n> `معرفك :` "..get_info(msg.sender_user_id_).."\n> `قمت بتعطيل مجموعه`" , 1, 'md')
+	      send(v, 0, 1, "> `ايديك :` _"..msg.sender_user_id_.."_\n> `قمت بتعطيل مجموعه`" , 1, 'md')
 end
        end
   end
