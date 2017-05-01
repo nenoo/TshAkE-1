@@ -892,7 +892,7 @@ if database:get('bot:viewget'..msg.sender_user_id_) then
 		send(msg.chat_id_, msg.id_, 1, '`قم بعمل اعاده توجيه للمنشور من القناه`', 1, 'md')
 		database:del('bot:viewget'..msg.sender_user_id_)
 	else
-		send(msg.chat_id_, msg.id_, 1, '<code>عدد المشاهدات </code>:\n> '..msg.views_..' View!', 1, 'html')
+		send(msg.chat_id_, msg.id_, 1, '<code>عدد المشاهدات </code>:\n> '..msg.views_..' ', 1, 'html')
         database:del('bot:viewget'..msg.sender_user_id_)
 	end
 end
