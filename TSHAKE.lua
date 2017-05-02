@@ -3161,7 +3161,7 @@ end
 	end
 	end
 	-----------------------------------------------------------------------------------------------
-          local text = msg.content_.text_:gsub('منع كلمه','bad')
+          local text = msg.content_.text_:gsub('منع','bad')
 	if text:match("^[Bb][Aa][Dd] (.*)$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
 	local filters = {string.match(text, "^([Bb][Aa][Dd]) (.*)$")} 
     local name = string.sub(filters[2], 1, 50)
