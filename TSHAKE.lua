@@ -2120,7 +2120,7 @@ end
                   if database:get('lang:gp:'..msg.chat_id_) then
                   text = '<b>User</b> '..get_info(result.id_)..' <b>Has been Globally Unbanned !</b>'
                 else 
-                  text = '<code>العضو '..get_info(result.id_)..' تم الغاء حظره من العام</code>'
+                  text = '<code>العضو </code>'..get_info(result.id_)..' <code>تم الغاء حظره من العام</code>'
 end
               else
                   if database:get('lang:gp:'..msg.chat_id_) then
