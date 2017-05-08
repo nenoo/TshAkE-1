@@ -1062,12 +1062,12 @@ elseif msg_type == 'MSG:NewUserAdd' then
     if database:get('welcome:'..msg.chat_id_) then
         text = database:get('welcome:'..msg.chat_id_)
     else
-        text = '*Hi {firstname} 😃*'
+        text = 'Hi {firstname} 😃'
     end
     local text = text:gsub('{firstname}',(msg.content_.members_[0].first_name_ or ''))
     local text = text:gsub('{lastname}',(msg.content_.members_[0].last_name_ or ''))
     local text = text:gsub('{username}',('@'..msg.content_.members_[0].username_ or ''))
-         send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
    end
 elseif msg_type == 'MSG:Contact' then
  if not is_mod(msg.sender_user_id_, msg.chat_id_) then
@@ -2904,7 +2904,7 @@ end
                 else
                   send(msg.chat_id_, msg.id_, 1, '> `تم قفل التعديل للمجموعه`', 1, 'md')
                 end
-                database:set('editmsg'..msg.chat_id_,true)
+                database:set('editmsg'..msg.chat_id_,'delmsg')
               else
                 if database:get('lang:gp:'..msg.chat_id_) then
                   send(msg.chat_id_, msg.id_, 1, '_> Lock edit is already_ *locked*', 1, 'md')
@@ -3108,33 +3108,34 @@ end
 	  end
  	end
 	
-	-----------------------------------------------------------------------------------------------
-	if text:match("^[Ww][Ll][Cc] [Oo][Nn]$") or text:match("^تفعيل الترحيب$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
-                if database:get('lang:gp:'..msg.chat_id_) then
-		 database:set("bot:welcome"..msg.chat_id_,true)
+	if text:match("^[Ww][Ll][Cc] [Oo][Nn]$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
          send(msg.chat_id_, msg.id_, 1, '#Done\nWelcome *Enabled* In This Supergroup.', 1, 'md')
-       else 
-         send(msg.chat_id_, msg.id_, 1, '`تم تفعيل الترحيب بالمجموعه`', 1, 'md')
-end
+		 database:set("bot:welcome"..msg.chat_id_,true)
 	end
-	if text:match("^[Ww][Ll][Cc] [Oo][Ff][Ff]$") or text:match("^تعطيل الترحيب$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
-                if database:get('lang:gp:'..msg.chat_id_) then
-		 database:del("bot:welcome"..msg.chat_id_)
+	if text:match("^[Ww][Ll][Cc] [Oo][Ff][Ff]$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
          send(msg.chat_id_, msg.id_, 1, '#Done\nWelcome *Disabled* In This Supergroup.', 1, 'md')
-       else 
+		 database:del("bot:welcome"..msg.chat_id_)
+	end
+	
+	if text:match("^تفعيل الترحيب$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
          send(msg.chat_id_, msg.id_, 1, '`تم تفعيل الترحيب بالمجموعه`', 1, 'md')
-end
-end 
+		 database:set("bot:welcome"..msg.chat_id_,true)
+	end
+	if text:match("^تعطيل الترحيب$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
+         send(msg.chat_id_, msg.id_, 1, '`تم تعطيل الترحيب بالمجموعه`', 1, 'md')
+		 database:del("bot:welcome"..msg.chat_id_)
+	end
 
-          local text = msg.content_.text_:gsub('وضع ترحيب','set wlc')
 	if text:match("^[Ss][Ee][Tt] [Ww][Ll][Cc] (.*)$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
 	local welcome = {string.match(text, "^([Ss][Ee][Tt] [Ww][Ll][Cc]) (.*)$")} 
-                if database:get('lang:gp:'..msg.chat_id_) then
-		 database:set('welcome:'..msg.chat_id_,welcome[2])
          send(msg.chat_id_, msg.id_, 1, '*Welcome Msg Has Been Saved!*\nWlc Text:\n\n`'..welcome[2]..'`', 1, 'md')
-       else 
+		 database:set('welcome:'..msg.chat_id_,welcome[2])
+	end
+	
+	if text:match("^وضع ترحيب (.*)$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
+	local welcome = {string.match(text, "^(وضع ترحيب) (.*)$")} 
          send(msg.chat_id_, msg.id_, 1, '`تم وضع الترحيب `:\n\n`'..welcome[2]..'`', 1, 'md')
-end
+		 database:set('welcome:'..msg.chat_id_,welcome[2])
 	end
 
           local text = msg.content_.text_:gsub('حذف الترحيب','del wlc')
