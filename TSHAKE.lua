@@ -2908,7 +2908,7 @@ end
                 if database:get('lang:gp:'..msg.chat_id_) then
         send(msg.chat_id_, msg.id_, 1, '*User* _'..result.sender_user_id_..'_ *Kicked.*', 1, 'md')
       else 
-        send(msg.chat_id_, msg.id_, 1, '● - `العضو` '..result.sender_user_id_..' `تم طرده من المجموعه` ⚠️`', 1, 'md')
+        send(msg.chat_id_, msg.id_, 1, '● - `العضو` '..result.sender_user_id_..' `تم طرده من المجموعه` ⚠️', 1, 'md')
 end
         chat_kick(result.chat_id_, result.sender_user_id_)
         end
@@ -7867,9 +7867,9 @@ local user_msgs = database:get('user:msgs'..msg.chat_id_..':'..msg.sender_user_i
     lastname = 'Not Found'
      end
     if database:get('lang:gp:'..msg.chat_id_) then
-      send(msg.chat_id_, msg.id_, 1, "> Group ID : "..msg.chat_id_.."\n> Your ID : "..msg.sender_user_id_.."\n> Your Name : "..result.first_name_.."\n> UserName : "..result.username_.."\n> Your Rank : "..t.."\n> Msgs : "..user_msgs.."", 1, 'moody')
+      send(msg.chat_id_, msg.id_, 1, "> Group ID : "..msg.chat_id_.."\n> Your ID : "..msg.sender_user_id_.."\n> Your Name : "..result.first_name_.."\n> UserName : "..result.username_.."\n> Your Rank : "..t.."\n> Msgs : "..user_msgs.."", 1, 'tmdl')
        else
-      send(msg.chat_id_, msg.id_, 1, "● - ايدي المجموعه 📍: "..msg.chat_id_.."\n● - ايديك 🆔 : "..msg.sender_user_id_.."\n● - اسمك 📌 : "..result.first_name_.."\n● - معرفك 🚹 : "..result.username_.."\n● - موقعك *️⃣ : "..t.."\n● - رسائلك 📝 : "..user_msgs.."", 1, 'moody')
+      send(msg.chat_id_, msg.id_, 1, "● - ايدي المجموعه 📍: "..msg.chat_id_.."\n● - ايديك 🆔 : "..msg.sender_user_id_.."\n● - اسمك 📌 : "..result.first_name_.."\n● - معرفك 🚹 : "..result.username_.."\n● - موقعك *️⃣ : "..t.."\n● - رسائلك 📝 : "..user_msgs.."", 1, 'tmdl')
       end
     end
           getUser(msg.sender_user_id_,get_me)
