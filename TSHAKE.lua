@@ -2345,7 +2345,7 @@ end
     end
 	-----------------------------------------------------------------------------------------------
 	if text:match("^[Ss][Ee][Tt][Mm][Oo][Tt][Ee] @(.*)$") and is_owner(msg.sender_user_id_, msg.chat_id_) then
-	local ap = {string.match(text, "^([Ss][Ee][Tt][Mm][Oo][Tt][Ee]) @(.*)$")} 
+	local apmd = {string.match(text, "^([Ss][Ee][Tt][Mm][Oo][Tt][Ee]) @(.*)$")} 
 	function promote_by_username(extra, result, success)
 	if result.id_ then
 	        database:sadd('bot:mods:'..msg.chat_id_, result.id_)
@@ -2363,16 +2363,16 @@ end
     end
 	         send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
     end
-	      resolve_username(ap[2],promote_by_username)
+	      resolve_username(apmd[2],promote_by_username)
     end
 	-----------------------------------------------------------------------------------------------
 	if text:match("^[Ss][Ee][Tt][Mm][Oo][Tt][Ee] (%d+)$") and is_owner(msg.sender_user_id_, msg.chat_id_) then
-	local ap = {string.match(text, "^([Ss][Ee][Tt][Mm][Oo][Tt][Ee]) (%d+)$")} 	
-	        database:sadd('bot:mods:'..msg.chat_id_, ap[2])
+	local apmd = {string.match(text, "^([Ss][Ee][Tt][Mm][Oo][Tt][Ee]) (%d+)$")} 	
+	        database:sadd('bot:mods:'..msg.chat_id_, apmd[2])
           if database:get('lang:gp:'..msg.chat_id_) then
-	send(msg.chat_id_, msg.id_, 1, '_User_ *'..ap[2]..'* _promoted as moderator._', 1, 'md')
+	send(msg.chat_id_, msg.id_, 1, '_User_ *'..apmd[2]..'* _promoted as moderator._', 1, 'md')
           else
-   send(msg.chat_id_, msg.id_, 1, '● - `العضو` *'..ap[2]..'* `تم رفعه ادمن` ☑️', 1, 'md')
+   send(msg.chat_id_, msg.id_, 1, '● - `العضو` *'..apmd[2]..'* `تم رفعه ادمن` ☑️', 1, 'md')
           end
     end
 	-----------------------------------------------------------------------------------------------
@@ -2401,7 +2401,7 @@ else
 	-----------------------------------------------------------------------------------------------
 	if text:match("^[Rr][Ee][Mm][Mm][Oo][Tt][Ee] @(.*)$") and is_owner(msg.sender_user_id_, msg.chat_id_) then
 	local hash = 'bot:mods:'..msg.chat_id_
-	local ap = {string.match(text, "^([Rr][Ee][Mm][Mm][Oo][Tt][Ee]) @(.*)$")} 
+	local apmd = {string.match(text, "^([Rr][Ee][Mm][Mm][Oo][Tt][Ee]) @(.*)$")} 
 	function demote_by_username(extra, result, success)
 	if result.id_ then
          database:srem(hash, result.id_)
@@ -2419,17 +2419,17 @@ else
     end
 	         send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
     end
-	      resolve_username(ap[2],demote_by_username)
+	      resolve_username(apmd[2],demote_by_username)
     end
 	-----------------------------------------------------------------------------------------------
 	if text:match("^[Rr][Ee][Mm][Mm][Oo][Tt][Ee] (%d+)$") and is_owner(msg.sender_user_id_, msg.chat_id_) then
 	local hash = 'bot:mods:'..msg.chat_id_
-	local ap = {string.match(text, "^([Rr][Ee][Mm][Mm][Oo][Tt][Ee]) (%d+)$")} 	
-         database:srem(hash, ap[2])
+	local apmd = {string.match(text, "^([Rr][Ee][Mm][Mm][Oo][Tt][Ee]) (%d+)$")} 	
+         database:srem(hash, apmd[2])
               if database:get('lang:gp:'..msg.chat_id_) then
-	send(msg.chat_id_, msg.id_, 1, '_User_ *'..ap[2]..'* _Demoted._', 1, 'md')
+	send(msg.chat_id_, msg.id_, 1, '_User_ *'..apmd[2]..'* _Demoted._', 1, 'md')
 else 
-    send(msg.chat_id_, msg.id_, 1, '● - `العضو` *'..ap[2]..'* `تم تنزيله من الادمنيه` ⚠️', 1, 'md')
+    send(msg.chat_id_, msg.id_, 1, '● - `العضو` *'..apmd[2]..'* `تم تنزيله من الادمنيه` ⚠️', 1, 'md')
   end
     end
 	-----------------------------------------------------------------------------------------------
@@ -2466,7 +2466,7 @@ end
     end
 	-----------------------------------------------------------------------------------------------
 	if text:match("^[Bb][Aa][Nn] @(.*)$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
-	local ap = {string.match(text, "^([Bb][Aa][Nn]) @(.*)$")} 
+	local apba = {string.match(text, "^([Bb][Aa][Nn]) @(.*)$")} 
 	function ban_by_username(extra, result, success)
 	if result.id_ then
 	if is_mod(result.id_, msg.chat_id_) then
@@ -2493,24 +2493,24 @@ end
     end
 	         send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
     end
-	      resolve_username(ap[2],ban_by_username)
+	      resolve_username(apba[2],ban_by_username)
     end
 	-----------------------------------------------------------------------------------------------
 	if text:match("^[Bb][Aa][Nn] (%d+)$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
-	local ap = {string.match(text, "^([Bb][Aa][Nn]) (%d+)$")}
-	if is_mod(ap[2], msg.chat_id_) then
+	local apba = {string.match(text, "^([Bb][Aa][Nn]) (%d+)$")}
+	if is_mod(apba[2], msg.chat_id_) then
                   if database:get('lang:gp:'..msg.chat_id_) then
          send(msg.chat_id_, msg.id_, 1, '*You Can,t [Kick/Ban] Moderators!!*', 1, 'md')
        else
 send(msg.chat_id_, msg.id_, 1, '● - لا تستطيع حظر الادمنيه والمدراء ⚠️❌', 1, 'md')
 end
     else
-	        database:sadd('bot:banned:'..msg.chat_id_, ap[2])
-		 chat_kick(msg.chat_id_, ap[2])
+	        database:sadd('bot:banned:'..msg.chat_id_, apba[2])
+		 chat_kick(msg.chat_id_, apba[2])
                   if database:get('lang:gp:'..msg.chat_id_) then
-	send(msg.chat_id_, msg.id_, 1, '_User_ *'..ap[2]..'* _Banned._', 1, 'md')
+	send(msg.chat_id_, msg.id_, 1, '_User_ *'..apba[2]..'* _Banned._', 1, 'md')
 else
-    send(msg.chat_id_, msg.id_, 1, '● - `العضو` *'..ap[2]..'* `تم حظره` ⚠️', 1, 'md')
+    send(msg.chat_id_, msg.id_, 1, '● - `العضو` *'..apba[2]..'* `تم حظره` ⚠️', 1, 'md')
   	end
 	end
 end
@@ -2538,7 +2538,7 @@ end
     end
 	-----------------------------------------------------------------------------------------------
 	if text:match("^[Uu][Nn][Bb][Aa][Nn] @(.*)$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
-	local ap = {string.match(text, "^([Uu][Nn][Bb][Aa][Nn]) @(.*)$")} 
+	local apba = {string.match(text, "^([Uu][Nn][Bb][Aa][Nn]) @(.*)$")} 
 	function unban_by_username(extra, result, success)
 	if result.id_ then
          database:srem('bot:banned:'..msg.chat_id_, result.id_)
@@ -2556,16 +2556,16 @@ end
     end
 	         send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
     end
-	      resolve_username(ap[2],unban_by_username)
+	      resolve_username(apba[2],unban_by_username)
     end
 	-----------------------------------------------------------------------------------------------
 	if text:match("^[Uu][Nn][Bb][Aa][Nn] (%d+)$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
-	local ap = {string.match(text, "^([Uu][Nn][Bb][Aa][Nn]) (%d+)$")} 	
+	local apba = {string.match(text, "^([Uu][Nn][Bb][Aa][Nn]) (%d+)$")} 	
 	        database:srem('bot:banned:'..msg.chat_id_, ap[2])
         if database:get('lang:gp:'..msg.chat_id_) then
-	send(msg.chat_id_, msg.id_, 1, '_User_ *'..ap[2]..'* _Unbanned._', 1, 'md')
+	send(msg.chat_id_, msg.id_, 1, '_User_ *'..apba[2]..'* _Unbanned._', 1, 'md')
 else
-   send(msg.chat_id_, msg.id_, 1, '● - `العضو` *'..ap[2]..'* `تم الغاء حظره` ☑️', 1, 'md')
+   send(msg.chat_id_, msg.id_, 1, '● - `العضو` *'..apba[2]..'* `تم الغاء حظره` ☑️', 1, 'md')
 end
   end
 	-----------------------------------------------------------------------------------------------
@@ -2608,7 +2608,7 @@ end    end
 	end
  -----------------------------------------------------------------------------------------------
 	if text:match("^[Dd][Ee][Ll][Aa][Ll][Ll] @(.*)$") and is_owner(msg.sender_user_id_, msg.chat_id_) then
-	local ap = {string.match(text, "^([Dd][Ee][Ll][Aa][Ll][Ll]) @(.*)$")} 
+	local apbll = {string.match(text, "^([Dd][Ee][Ll][Aa][Ll][Ll]) @(.*)$")} 
 	function delall_by_username(extra, result, success)
 	if result.id_ then
 	if is_mod(result.id_, msg.chat_id_) then
@@ -2634,7 +2634,7 @@ end
     end
 	         send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
     end
-	      resolve_username(ap[2],delall_by_username)
+	      resolve_username(apbll[2],delall_by_username)
     end
   -----------------------------------------banall--------------------------------------------------
           local text = msg.content_.text_:gsub('حظر عام','banall')
@@ -2662,7 +2662,7 @@ end
           end
           -----------------------------------------------------------------------------------------------
           if text:match("^[Bb][Aa][Nn][Aa][Ll][Ll] @(.*)$") and is_sudo(msg) then
-            local aps = {string.match(text, "^([Bb][Aa][Nn][Aa][Ll][Ll]) @(.*)$")}
+            local apbll = {string.match(text, "^([Bb][Aa][Nn][Aa][Ll][Ll]) @(.*)$")}
             function gban_by_username(extra, result, success)
               if result.id_ then
          	if is_admin(result.id_, msg.chat_id_) then
@@ -2689,12 +2689,12 @@ end
             end
               send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
             end
-            resolve_username(aps[2],gban_by_username)
+            resolve_username(apbll[2],gban_by_username)
           end
           -----------------------------------------------------------------------------------------------
           if text:match("^[Bb][Aa][Nn][Aa][Ll][Ll] (%d+)$") and is_sudo(msg) then
-            local ap = {string.match(text, "^([Bb][Aa][Nn][Aa][Ll][Ll]) (%d+)$")}
-          	if is_admin(ap[2], msg.chat_id_) then
+            local apbll = {string.match(text, "^([Bb][Aa][Nn][Aa][Ll][Ll]) (%d+)$")}
+          	if is_admin(apbll[2], msg.chat_id_) then
                   if database:get('lang:gp:'..msg.chat_id_) then
              send(msg.chat_id_, msg.id_, 1, '*You Can,t [Banall] admins/sudo!!*', 1, 'md')
        else
@@ -2703,14 +2703,14 @@ end
     else
             local hash = 'bot:gbanned:'
             if database:get('lang:gp:'..msg.chat_id_) then
-                texts = '<b>User :</b> <code>'..ap[2]..'</code> <b> Has been Globally Banned !</b>'
+                texts = '<b>User :</b> <code>'..apbll[2]..'</code> <b> Has been Globally Banned !</b>'
               else 
-                texts = '● - <code>العضو </code>'..ap[2]..'<code> تم حظره عام</code> ⚠️'
+                texts = '● - <code>العضو </code>'..apbll[2]..'<code> تم حظره عام</code> ⚠️'
 end
 end
               send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
-            database:set('bot:gbanned:'..ap[2],true)
-            database:sadd(hash, ap[2])
+            database:set('bot:gbanned:'..apbll[2],true)
+            database:sadd(hash, apbll[2])
           end
           -----------------------------------------------------------------------------------------------
           local text = msg.content_.text_:gsub('الغاء العام','unbanall')
@@ -2752,13 +2752,13 @@ end
           end
           -----------------------------------------------------------------------------------------------
           if text:match("^[Uu][Nn][Bb][Aa][Nn][Aa][Ll][Ll] (%d+)$") and is_sudo(msg) then
-            local ap = {string.match(text, "^([Uu][Nn][Bb][Aa][Nn][Aa][Ll][Ll]) (%d+)$")}
+            local apbll = {string.match(text, "^([Uu][Nn][Bb][Aa][Nn][Aa][Ll][Ll]) (%d+)$")}
             local hash = 'bot:gbanned:'
               database:srem(hash, ap[2])
               if database:get('lang:gp:'..msg.chat_id_) then
-              texts = '<b>User :</b> '..ap[2]..' <b>Has been Globally Unbanned !</b>'
+              texts = '<b>User :</b> '..apbll[2]..' <b>Has been Globally Unbanned !</b>'
             else 
-                texts = '● - <code>العضو </code>'..ap[2]..'<code> تم الغاء حظره من العام</code> ☑️'
+                texts = '● - <code>العضو </code>'..apbll[2]..'<code> تم الغاء حظره من العام</code> ☑️'
 end
               send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
             end
@@ -2794,7 +2794,7 @@ end
     end
 	-----------------------------------------------------------------------------------------------
 	if text:match("^[Ss][Ii][Ll][Ee][Nn][Tt] @(.*)$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
-	local ap = {string.match(text, "^([Ss][Ii][Ll][Ee][Nn][Tt]) @(.*)$")} 
+	local apsi = {string.match(text, "^([Ss][Ii][Ll][Ee][Nn][Tt]) @(.*)$")} 
 	function mute_by_username(extra, result, success)
 	if result.id_ then
 	if is_mod(result.id_, msg.chat_id_) then
@@ -2821,12 +2821,12 @@ end
     end
 	         send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
     end
-	      resolve_username(ap[2],mute_by_username)
+	      resolve_username(apsi[2],mute_by_username)
     end
 	-----------------------------------------------------------------------------------------------
 	if text:match("^[Ss][Ii][Ll][Ee][Nn][Tt] (%d+)$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
-	local ap = {string.match(text, "^([Ss][Ii][Ll][Ee][Nn][Tt]) (%d+)$")}
-	if is_mod(ap[2], msg.chat_id_) then
+	local apsi = {string.match(text, "^([Ss][Ii][Ll][Ee][Nn][Tt]) (%d+)$")}
+	if is_mod(apsi[2], msg.chat_id_) then
                   if database:get('lang:gp:'..msg.chat_id_) then
          send(msg.chat_id_, msg.id_, 1, '*You Can,t [Kick/Ban] Moderators!!*', 1, 'md')
        else
@@ -2835,9 +2835,9 @@ end
     else
 	        database:sadd('bot:muted:'..msg.chat_id_, ap[2])
                   if database:get('lang:gp:'..msg.chat_id_) then
-	send(msg.chat_id_, msg.id_, 1, '_User_ *'..ap[2]..'* _silent_', 1, 'md')
+	send(msg.chat_id_, msg.id_, 1, '_User_ *'..apsi[2]..'* _silent_', 1, 'md')
 else 
-    send(msg.chat_id_, msg.id_, 1, '● - `العضو` *'..ap[2]..'* `تم كتمه` ⚠️', 1, 'md')
+    send(msg.chat_id_, msg.id_, 1, '● - `العضو` *'..apsi[2]..'* `تم كتمه` ⚠️', 1, 'md')
 end
 	end
     end 
@@ -2865,7 +2865,7 @@ end
     end
 	-----------------------------------------------------------------------------------------------
 	if text:match("^[Uu][Nn][Ss][Ii][Ll][Ee][Nn][Tt] @(.*)$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
-	local ap = {string.match(text, "^([Uu][Nn][Ss][Ii][Ll][Ee][Nn][Tt]) @(.*)$")} 
+	local apsi = {string.match(text, "^([Uu][Nn][Ss][Ii][Ll][Ee][Nn][Tt]) @(.*)$")} 
 	function unmute_by_username(extra, result, success)
 	if result.id_ then
          database:srem('bot:muted:'..msg.chat_id_, result.id_)
@@ -2883,24 +2883,25 @@ end
     end
 	         send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
     end
-	      resolve_username(ap[2],unmute_by_username)
+	      resolve_username(apsi[2],unmute_by_username)
     end
 	-----------------------------------------------------------------------------------------------
 	if text:match("^[Uu][Nn][Ss][Ii][Ll][Ee][Nn][Tt] (%d+)$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
-	local ap = {string.match(text, "^([Uu][Nn][Ss][Ii][Ll][Ee][Nn][Tt]) (%d+)$")} 	
+	local apsi = {string.match(text, "^([Uu][Nn][Ss][Ii][Ll][Ee][Nn][Tt]) (%d+)$")} 	
 	        database:srem('bot:muted:'..msg.chat_id_, ap[2])
                   if database:get('lang:gp:'..msg.chat_id_) then
-	send(msg.chat_id_, msg.id_, 1, '_User_ *'..ap[2]..'* _unsilent_', 1, 'md')
+	send(msg.chat_id_, msg.id_, 1, '_User_ *'..apsi[2]..'* _unsilent_', 1, 'md')
 else 
-   send(msg.chat_id_, msg.id_, 1, '● - `العضو` *'..ap[2]..'* `تم الغاء كتمه` ☑️', 1, 'md')
+   send(msg.chat_id_, msg.id_, 1, '● - `العضو` *'..apsi[2]..'* `تم الغاء كتمه` ☑️', 1, 'md')
 end
   end
     -----------------------------------------------------------------------------------------------
-  if text:match("^[Kk][Ii][Cc][Kk]$") or text:match("^طرد$") and msg.reply_to_message_id_ and is_mod(msg.sender_user_id_, msg.chat_id_) then
+    local text = msg.content_.text_:gsub('طرد','kick')
+  if text:match("^[Kk][Ii][Cc][Kk]$") and msg.reply_to_message_id_ and is_mod(msg.sender_user_id_, msg.chat_id_) then
       function kick_reply(extra, result, success)
 	if is_mod(result.sender_user_id_, result.chat_id_) then
                 if database:get('lang:gp:'..msg.chat_id_) then
-         send(msg.chat_id_, msg.id_, 1, '*You Can,t [Kick/Ban] Moderators!!*', 1, 'md')
+         send(msg.chat_id_, msg.id_, 1, '*You Can,t [Kick] Moderators!!*', 1, 'md')
        else 
          send(msg.chat_id_, msg.id_, 1, '● - `لا تستطيع طرد الادمنيه والمدراء` ⚠️❌', 1, 'md')
 end
@@ -2908,19 +2909,105 @@ end
                 if database:get('lang:gp:'..msg.chat_id_) then
         send(msg.chat_id_, msg.id_, 1, '*User* _'..result.sender_user_id_..'_ *Kicked.*', 1, 'md')
       else 
-        send(msg.chat_id_, msg.id_, 1, '● - `العضو` '..result.sender_user_id_..' `تم طرده من المجموعه` ⚠️', 1, 'md')
+        send(msg.chat_id_, msg.id_, 1, '● - `العضو` '..result.sender_user_id_..' `تم طرده` ⚠️', 1, 'md')
 end
         chat_kick(result.chat_id_, result.sender_user_id_)
         end
 	end
    getMessage(msg.chat_id_,msg.reply_to_message_id_,kick_reply)
   end
-    -----------------------------------------------------------------------------------------------
-  if text:match("^inv$") and msg.reply_to_message_id_ and is_sudo(msg) then
-      function inv_reply(extra, result, success)
-           add_user(result.chat_id_, result.sender_user_id_, 5)
-        end
-   getMessage(msg.chat_id_, msg.reply_to_message_id_,inv_reply)
+	-----------------------------------------------------------------------------------------------
+	if text:match("^[Kk][Ii][Cc][Kk] @(.*)$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
+	local apki = {string.match(text, "^([Kk][Ii][Cc][Kk]) @(.*)$")} 
+	function kick_by_username(extra, result, success)
+	if result.id_ then
+	if is_mod(result.id_, msg.chat_id_) then
+                  if database:get('lang:gp:'..msg.chat_id_) then
+         send(msg.chat_id_, msg.id_, 1, '*You Can,t [Kick] Moderators!!*', 1, 'md')
+       else
+send(msg.chat_id_, msg.id_, 1, '● - لا تستطيع طرد الادمنيه والمدراء ⚠️❌', 1, 'md')
+end
+    else
+                  if database:get('lang:gp:'..msg.chat_id_) then
+            texts = '<b>User </b><code>'..result.id_..'</code> <b>Kicked.!</b>'
+else
+                        texts = '● - <code>العضو </code>'..result.id_..'<code> تم طرده</code> ⚠️'
+end
+		 chat_kick(msg.chat_id_, result.id_)
+	end
+          else 
+                  if database:get('lang:gp:'..msg.chat_id_) then
+            texts = '<code>User not found!</code>'
+          else
+                        texts = '<code>خطا </code>⚠️'
+end
+    end
+	         send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
+    end
+	      resolve_username(apki[2],kick_by_username)
+    end
+	-----------------------------------------------------------------------------------------------
+	if text:match("^[Kk][Ii][Cc][Kk] (%d+)$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
+	local apki = {string.match(text, "^([Kk][Ii][Cc][Kk]) (%d+)$")}
+	if is_mod(apki[2], msg.chat_id_) then
+                  if database:get('lang:gp:'..msg.chat_id_) then
+         send(msg.chat_id_, msg.id_, 1, '*You Can,t [Kick] Moderators!!*', 1, 'md')
+       else
+send(msg.chat_id_, msg.id_, 1, '● - لا تستطيع طرد الادمنيه والمدراء ⚠️❌', 1, 'md')
+end
+    else
+		 chat_kick(msg.chat_id_, apki[2])
+                  if database:get('lang:gp:'..msg.chat_id_) then
+	send(msg.chat_id_, msg.id_, 1, '_User_ *'..apki[2]..'* _Kicked._', 1, 'md')
+else
+    send(msg.chat_id_, msg.id_, 1, '● - `العضو` *'..apki[2]..'* `تم طرده` ⚠️', 1, 'md')
+  	end
+	end
+end
+          -----------------------------------------------------------------------------------------------
+ local text = msg.content_.text_:gsub('اضافه','invite')
+   if text:match("^[Ii][Nn][Vv][Ii][Tt][Ee]$") and msg.reply_to_message_id_ ~= 0 and is_sudo(msg) then
+   function inv_reply(extra, result, success)
+    add_user(result.chat_id_, result.sender_user_id_, 5)
+                if database:get('lang:gp:'..msg.chat_id_) then
+        send(msg.chat_id_, msg.id_, 1, '*User* _'..result.sender_user_id_..'_ *Add it.*', 1, 'md')
+      else 
+        send(msg.chat_id_, msg.id_, 1, '● - `العضو` '..result.sender_user_id_..' `تم اضافته للمجموعه` ☑️', 1, 'md')
+   end
+   end
+    getMessage(msg.chat_id_, msg.reply_to_message_id_,inv_reply)
+   end
+          -----------------------------------------------------------------------------------------------
+   if text:match("^[Ii][Nn][Vv][Ii][Tt][Ee] @(.*)$") and is_sudo(msg) then
+    local apss = {string.match(text, "^([Ii][Nn][Vv][Ii][Tt][Ee]) @(.*)$")}
+    function invite_by_username(extra, result, success)
+     if result.id_ then
+                  if database:get('lang:gp:'..msg.chat_id_) then
+            texts = '<b>User </b><code>'..result.id_..'</code> <b>Add it!</b>'
+else
+            texts = '● - <code>العضو </code>'..result.id_..'<code> تم اضافته للمجموعه</code> ☑️'
+end
+    add_user(msg.chat_id_, result.id_, 5)
+          else 
+                  if database:get('lang:gp:'..msg.chat_id_) then
+            texts = '<code>User not found!</code>'
+          else
+            texts = '<code>خطا </code>⚠️'
+end
+    end
+	         send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
+    end
+    resolve_username(apss[2],invite_by_username)
+ end
+        -----------------------------------------------------------------------------------------------
+    if text:match("^[Ii][Nn][Vv][Ii][Tt][Ee] (%d+)$") and is_sudo(msg) then
+      local apee = {string.match(text, "^([Ii][Nn][Vv][Ii][Tt][Ee]) (%d+)$")}
+      add_user(msg.chat_id_, ap[2], 5)
+                  if database:get('lang:gp:'..msg.chat_id_) then
+	send(msg.chat_id_, msg.id_, 1, '_User_ *'..apee[2]..'* _Add it._', 1, 'md')
+else
+    send(msg.chat_id_, msg.id_, 1, '● - `العضو` *'..apee[2]..'* `تم اضافته للمجموعه` ☑️', 1, 'md')
+  	end
     end
 	-----------------------------------------------------------------------------------------------
           local text = msg.content_.text_:gsub('رفع مدير','setowner')
@@ -2946,7 +3033,7 @@ end
     end
 	-----------------------------------------------------------------------------------------------
 	if text:match("^[Ss][Ee][Tt][Oo][Ww][Nn][Ee][Rr] @(.*)$") and is_admin(msg.sender_user_id_, msg.chat_id_) then
-	local ap = {string.match(text, "^([Ss][Ee][Tt][Oo][Ww][Nn][Ee][Rr]) @(.*)$")} 
+	local apow = {string.match(text, "^([Ss][Ee][Tt][Oo][Ww][Nn][Ee][Rr]) @(.*)$")} 
 	function setowner_by_username(extra, result, success)
 	if result.id_ then
 	        database:sadd('bot:owners:'..msg.chat_id_, result.id_)
@@ -2964,16 +3051,16 @@ end
     end
 	         send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
     end
-	      resolve_username(ap[2],setowner_by_username)
+	      resolve_username(apow[2],setowner_by_username)
     end
 	-----------------------------------------------------------------------------------------------
 	if text:match("^[Ss][Ee][Tt][Oo][Ww][Nn][Ee][Rr] (%d+)$") and is_admin(msg.sender_user_id_, msg.chat_id_) then
-	local ap = {string.match(text, "^([Ss][Ee][Tt][Oo][Ww][Nn][Ee][Rr]) (%d+)$")} 	
-	        database:sadd('bot:owners:'..msg.chat_id_, ap[2])
+	local apow = {string.match(text, "^([Ss][Ee][Tt][Oo][Ww][Nn][Ee][Rr]) (%d+)$")} 	
+	        database:sadd('bot:owners:'..msg.chat_id_, apow[2])
                   if database:get('lang:gp:'..msg.chat_id_) then
-	send(msg.chat_id_, msg.id_, 1, '_User_ *'..ap[2]..'* _Promoted as Group Owner._', 1, 'md')
+	send(msg.chat_id_, msg.id_, 1, '_User_ *'..apow[2]..'* _Promoted as Group Owner._', 1, 'md')
 else 
-   send(msg.chat_id_, msg.id_, 1, '● - `العضو` *'..ap[2]..'* `تم رفعه مدير` ☑️', 1, 'md')
+   send(msg.chat_id_, msg.id_, 1, '● - `العضو` *'..apow[2]..'* `تم رفعه مدير` ☑️', 1, 'md')
 end
     end
 	-----------------------------------------------------------------------------------------------
@@ -3000,7 +3087,7 @@ end
     end
 	-----------------------------------------------------------------------------------------------
 	if text:match("^[Rr][Ee][Mm][Oo][Ww][Nn][Ee][Rr] @(.*)$") and is_admin(msg.sender_user_id_, msg.chat_id_) then
-	local ap = {string.match(text, "^([Rr][Ee][Mm][Oo][Ww][Nn][Ee][Rr]) @(.*)$")} 
+	local apow = {string.match(text, "^([Rr][Ee][Mm][Oo][Ww][Nn][Ee][Rr]) @(.*)$")} 
 	local hash = 'bot:owners:'..msg.chat_id_
 	function remowner_by_username(extra, result, success)
 	if result.id_ then
@@ -3019,17 +3106,17 @@ end
     end
 	         send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
     end
-	      resolve_username(ap[2],remowner_by_username)
+	      resolve_username(apow[2],remowner_by_username)
     end
 	-----------------------------------------------------------------------------------------------
 	if text:match("^[Rr][Ee][Mm][Oo][Ww][Nn][Ee][Rr] (%d+)$") and is_admin(msg.sender_user_id_, msg.chat_id_) then
 	local hash = 'bot:owners:'..msg.chat_id_
-	local ap = {string.match(text, "^([Rr][Ee][Mm][Oo][Ww][Nn][Ee][Rr]) (%d+)$")} 	
-         database:srem(hash, ap[2])
+	local apow = {string.match(text, "^([Rr][Ee][Mm][Oo][Ww][Nn][Ee][Rr]) (%d+)$")} 	
+         database:srem(hash, apow[2])
 	     if database:get('lang:gp:'..msg.chat_id_) then
-	send(msg.chat_id_, msg.id_, 1, '_User_ *'..ap[2]..'* _Removed from ownerlist._', 1, 'md')
+	send(msg.chat_id_, msg.id_, 1, '_User_ *'..apow[2]..'* _Removed from ownerlist._', 1, 'md')
 else 
-    send(msg.chat_id_, msg.id_, 1, '● - `العضو` *'..ap[2]..'* `تم تنزيله من المدراء` ⚠️', 1, 'md')
+    send(msg.chat_id_, msg.id_, 1, '● - `العضو` *'..apow[2]..'* `تم تنزيله من المدراء` ⚠️', 1, 'md')
 end
     end
 	-----------------------------------------------------------------------------------------------
@@ -8083,6 +8170,7 @@ end
 *| silent |* `لكتم عضو` 
 *| ban |* `حظر عضو` 
 *| unban |* `الغاء حظر العضو` 
+*| kick |* `طرد عضو` 
 *| id |* `لاظهار الايدي [بالرد] `
 *| pin |* `تثبيت رساله!`
 *| unpin |* `الغاء تثبيت الرساله!`
@@ -8178,6 +8266,7 @@ end
 *| remowner |* `لحذف مدير`
 *| banall |* `لحظر العام`
 *| unbanall |* `لالغاء العام`
+*| invite |* `لاضافه عضو`
 *| groups |* `عدد كروبات البوت`
 *| bc |* `لنشر شئ`
 *| del |* `ويه العدد حذف رسائل`
@@ -8345,6 +8434,7 @@ end
 • الغاء كتم | 🔆
 • كتم | 🔅
 • حظر | ✳️
+• طرد | ♦️
 • الغاء حظر | ❇️
 • ايدي + رد | 🆔
 • تثبيت | ❗️
@@ -8445,6 +8535,7 @@ end
 • حظر عام | 🔴
 • الغاء العام | 🔵
 • الكروبات | 🚻
+• اضافه | ⏺
 • اذاعه + كليشه | 🛃
 • تنظيف + عدد | 🚮
 ֆ • • • • • • • • • • • • • ֆ
