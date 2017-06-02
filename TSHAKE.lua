@@ -3675,7 +3675,7 @@ end
                 if database:get('lang:gp:'..msg.chat_id_) then
 		  send(msg.chat_id_, msg.id_, 1, "*New Word baded!*\n--> `"..name.."`", 1, 'md')
 else 
-  		  send(msg.chat_id_, msg.id_, 1, "● - `"..name.."` تم اضافتها لقائمه المنع`` ✔️", 1, 'md')
+  		  send(msg.chat_id_, msg.id_, 1, "● - `"..name.."` `تم اضافتها لقائمه المنع` ✔️", 1, 'md')
 end
 	end
 	-----------------------------------------------------------------------------------------------
@@ -3687,7 +3687,7 @@ end
                 if database:get('lang:gp:'..msg.chat_id_) then
 		  send(msg.chat_id_, msg.id_, 1, "`"..rws[2].."` *Removed From baded List!*", 1, 'md')
 else 
-  		  send(msg.chat_id_, msg.id_, 1, " ● - `"..rws[2].."` تم حذفها من قائمه المنع` ❌⚠️", 1, 'md')
+  		  send(msg.chat_id_, msg.id_, 1, " ● - "..rws[2].."` تم حذفها من قائمه المنع` ❌⚠️", 1, 'md')
 end
 	end 
 	-----------------------------------------------------------------------------------------------
