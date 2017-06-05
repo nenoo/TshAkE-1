@@ -7894,9 +7894,9 @@ local user_msgs = database:get('user:msgs'..msg.chat_id_..':'..msg.sender_user_i
 end
    else
           if database:get('lang:gp:'..msg.chat_id_) then
-      send(msg.chat_id_, msg.id_, 1, "You Have'nt Profile Photo!!\n\n> *> Group ID :* "..msg.chat_id_.."\n*> Your ID :* "..msg.sender_user_id_.."\n*> UserName :* "..get_info(msg.sender_user_id_).."\n*> Your Rank :* "..t.."\n*> Msgs : *_"..user_msgs.."_", 1, 'md')
+      send(msg.chat_id_, msg.id_, 1, "You Have'nt Profile Photo!!\n\n> *> Group ID :* "..msg.chat_id_.."\n*> Your ID :* "..msg.sender_user_id_.."\n*> UserName :* "..get_info(msg.sender_user_id_).."\n*> Msgs : *_"..user_msgs.."_", 1, 'md')
    else 
-      send(msg.chat_id_, msg.id_, 1, "● -`انت لا تملك صوره لحسابك ❗️`\n\n● -` ايدي المجموعه 📍 :` "..msg.chat_id_.."\n● -` ايديك : 📌` "..msg.sender_user_id_.."\n● -` معرفك 🚹 :` "..get_info(msg.sender_user_id_).."\n● - `موقعك` *️⃣ : "..t.."\n● -` رسائلك 📝 : `_"..user_msgs.."_", 1, 'md')
+      send(msg.chat_id_, msg.id_, 1, "● -`انت لا تملك صوره لحسابك ❗️`\n\n● -` ايدي المجموعه 📍 :` "..msg.chat_id_.."\n● -` ايديك : 📌` "..msg.sender_user_id_.."\n● -` معرفك 🚹 :` "..get_info(msg.sender_user_id_).."\n● -` رسائلك 📝 : `_"..user_msgs.."_", 1, 'md')
 end
    end
    end
