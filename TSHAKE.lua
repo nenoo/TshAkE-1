@@ -2692,27 +2692,6 @@ end
             resolve_username(apbll[2],gban_by_username)
           end
           -----------------------------------------------------------------------------------------------
-          if text:match("^[Bb][Aa][Nn][Aa][Ll][Ll] (%d+)$") and is_sudo(msg) then
-            local apbll = {string.match(text, "^([Bb][Aa][Nn][Aa][Ll][Ll]) (%d+)$")}
-          	if is_admin(apbll[2], msg.chat_id_) then
-                  if database:get('lang:gp:'..msg.chat_id_) then
-             send(msg.chat_id_, msg.id_, 1, '*You Can,t [Banall] admins/sudo!!*', 1, 'md')
-       else
-           send(msg.chat_id_, msg.id_, 1, '● - لا تستطيع حظر ادمنيه البوت والمطورين عام ⚠️❌', 1, 'md')
-         end
-    else
-            local hash = 'bot:gbanned:'
-            if database:get('lang:gp:'..msg.chat_id_) then
-                texts = '<b>User :</b> <code>'..apbll[2]..'</code> <b> Has been Globally Banned !</b>'
-              else 
-                texts = '● - <code>العضو </code>'..apbll[2]..'<code> تم حظره عام</code> ⚠️'
-end
-end
-              send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
-            database:set('bot:gbanned:'..apbll[2],true)
-            database:sadd(hash, apbll[2])
-          end
-          -----------------------------------------------------------------------------------------------
           local text = msg.content_.text_:gsub('الغاء العام','unbanall')
           if text:match("^[Uu][Nn][Bb][Aa][Nn][Aa][Ll][Ll]$") and is_sudo(msg) and msg.reply_to_message_id_ then
             function ungban_by_reply(extra, result, success)
@@ -7907,60 +7886,6 @@ end
     limit_ = 1
   }, getpro, nil)
 end
-
-
-if text:match("^[Mm][Ee]$") and msg.reply_to_message_id_ == 0 or text:match("^موقعي$") and msg.reply_to_message_id_ == 0 then
-local user_msgs = database:get('user:msgs'..msg.chat_id_..':'..msg.sender_user_id_)
-          function get_me(extra,result,success)
-      if is_sudo(msg) then
-      if database:get('lang:gp:'..msg.chat_id_) then
-      t = 'Sudo'
-      else
-      t = 'مطور البوت ☑️'
-      end
-      elseif is_admin(msg.sender_user_id_) then
-      if database:get('lang:gp:'..msg.chat_id_) then
-      t = 'Global Admin'
-      else
-      t = 'ادمن في البوت ✔️'
-      end
-      elseif is_owner(msg.sender_user_id_, msg.chat_id_) then
-      if database:get('lang:gp:'..msg.chat_id_) then
-      t = 'Group Owner'
-      else
-      t = 'مدير الكروب ❗️'
-      end
-      elseif is_mod(msg.sender_user_id_, msg.chat_id_) then
-      if database:get('lang:gp:'..msg.chat_id_) then
-      t = 'Group Moderator'
-      else
-      t = 'ادمن للكروب 🎐'
-      end
-      else
-      if database:get('lang:gp:'..msg.chat_id_) then
-      t = 'Group Member'
-      else
-      t = 'عضو فقط ⚠️'
-      end
-    end
-    if result.username_ then
-    result.username_ = '@'..result.username_
-      else
-    result.username_ = 'Not Found'
-        end
-    if result.last_name_ then
-    lastname = result.last_name_
-       else
-    lastname = 'Not Found'
-     end
-    if database:get('lang:gp:'..msg.chat_id_) then
-      send(msg.chat_id_, msg.id_, 1, "> Group ID : "..msg.chat_id_.."\n> Your ID : "..msg.sender_user_id_.."\n> Your Name : "..result.first_name_.."\n> UserName : "..result.username_.."\n> Your Rank : "..t.."\n> Msgs : "..user_msgs.."", 1, 'tmdl')
-       else
-      send(msg.chat_id_, msg.id_, 1, "● - ايدي المجموعه 📍: "..msg.chat_id_.."\n● - ايديك 🆔 : "..msg.sender_user_id_.."\n● - اسمك 📌 : "..result.first_name_.."\n● - معرفك 🚹 : "..result.username_.."\n● - موقعك *️⃣ : "..t.."\n● - رسائلك 📝 : "..user_msgs.."", 1, 'tmdl')
-      end
-    end
-          getUser(msg.sender_user_id_,get_me)
-  end
 
    if text:match('^الحساب (%d+)$') and is_mod(msg.sender_user_id_, msg.chat_id_) then
         local id = text:match('^الحساب (%d+)$')
